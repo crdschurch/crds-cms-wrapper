@@ -1,0 +1,27 @@
+{
+  "name": "crds-cms-wrapper",
+  "version": "1.0.0",
+  "description": "An azure serverless function for wrapping cms service",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash.camelcase": "^4.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crdschurch/crds-cms-wrapper.git"
+  },
+  "keywords": [
+    "cms"
+  ],
+  "author": "James Janssen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crdschurch/crds-cms-wrapper/issues"
+  },
+  "homepage": "https://github.com/crdschurch/crds-cms-wrapper#readme"
+}
