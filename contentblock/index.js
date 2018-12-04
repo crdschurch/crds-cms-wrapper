@@ -17,7 +17,7 @@ module.exports = function(context, req) {
       try {
         context.res = {
           status: response.status,
-          body: "test",//cleanBody(response),
+          body: cleanBody(response),
           headers: {
             "Content-Type": "application/json"
           }
