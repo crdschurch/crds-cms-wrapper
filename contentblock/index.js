@@ -9,7 +9,7 @@ module.exports = function(context, req) {
   //test comment ...more test comment
 
   let newQueryParams = generateParams(req);
-  let cms_endpoint = `${CMS_CLIENT_ENDPOINT}/spaces/${CONTENTFUL_SPACE_VALUE}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=content_block&select=fields${newQueryParams}`;
+  let cms_endpoint = `${CMS_CLIENT_ENDPOINT}/spaces/${CONTENTFUL_SPACE_VALUE}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=content_block&select=fields${newQueryParams}&limit=1000`;
 
   axios
     .get(cms_endpoint)
