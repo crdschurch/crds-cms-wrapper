@@ -8,6 +8,6 @@
 ## Setup
 1. run `npm i` to install the required packages
 
-
 ## Continuous deploy
 * Azure's continuous deploy has been flakey. You may have to manually push the updates to azure after checking them in. Use the vscode plugin or Visual Studio to do so. 
+
