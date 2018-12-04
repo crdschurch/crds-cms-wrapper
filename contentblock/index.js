@@ -58,7 +58,7 @@ function cleanBody(response) {
     body = { contentBlock: CleanFieldsObject(response.data.items[0]) };
   else {
     body = {
-      contentBlocks: response.data.items.map(item => CleanFieldsObject(item))
+      contentblocks: response.data.items.map(item => CleanFieldsObject(item))
     };
   }
   return body;
