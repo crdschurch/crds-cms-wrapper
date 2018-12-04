@@ -6,7 +6,7 @@ module.exports = function(context, req) {
   CONTENTFUL_SPACE_VALUE = process.env["CONTENTFUL_SPACE_VALUE"];
   CONTENTFUL_ACCESS_TOKEN = process.env["CONTENTFUL_ACCESS_TOKEN"];
 
-  //test comment
+  //test comment ...more test comment
 
   let newQueryParams = generateParams(req);
   let cms_endpoint = `${CMS_CLIENT_ENDPOINT}/spaces/${CONTENTFUL_SPACE_VALUE}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=content_block&select=fields${newQueryParams}`;
