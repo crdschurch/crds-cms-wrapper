@@ -17,7 +17,8 @@ module.exports = function(context, req) {
           status: response.status,
           body: cleanBody(response),
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Custom-Header": "woots"
           }
         };
         context.done();
