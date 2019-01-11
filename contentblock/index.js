@@ -5,9 +5,10 @@ module.exports = function(context, req) {
   CMS_CLIENT_ENDPOINT = process.env["CMS_CLIENT_ENDPOINT"];
   CONTENTFUL_SPACE_VALUE = process.env["CONTENTFUL_SPACE_VALUE"];
   CONTENTFUL_ACCESS_TOKEN = process.env["CONTENTFUL_ACCESS_TOKEN"];
+  CONTENTFUL_ENV = process.env["CONTENTFUL_ENV"];
 
   let newQueryParams = generateParams(req);
-  let cms_endpoint = `${CMS_CLIENT_ENDPOINT}/spaces/${CONTENTFUL_SPACE_VALUE}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=content_block&select=fields${newQueryParams}&limit=1000`;
+  let cms_endpoint = `${CMS_CLIENT_ENDPOINT}/spaces/${CONTENTFUL_SPACE_VALUE}/environments/${CONTENTFUL_ENV}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=content_block&select=fields${newQueryParams}&limit=1000`;
 
   axios
     .get(cms_endpoint)
@@ -15,7 +16,7 @@ module.exports = function(context, req) {
       try {
         context.res = {
           status: response.status,
-          body: cleanBody(response),
+          body: cleanBody(response, newQueryParams),
           headers: {
             "Content-Type": "application/json",
             "Custom-Header": "woots"
@@ -37,7 +38,7 @@ function generateParams(req) {
 function generateQueryParams(req) {
   let newQueryParams = "";
   for (var propName in req.query) {
-    if (["category", "type", "title"].indexOf(propName) > -1) {
+    if (["category", "type", "title", "id"].indexOf(propName.replace(/\W/g, '')) > -1) {
       newPropName = propName.includes("[]")
         ? propName.replace("[]", "[in]")
         : propName + "[in]";
@@ -51,9 +52,9 @@ function generatePathParams(req) {
     return `&fields.id[in]=${req.params.id}`;
 }
 
-function cleanBody(response) {
+function cleanBody(response, newQueryParams) {
   let body;
-  if (response.data.items.length == 1)
+  if (response.data.items.length == 1 && !newQueryParams)
     body = { contentBlock: CleanFieldsObject(response.data.items[0]) };
   else {
     body = {
