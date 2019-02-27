@@ -68,15 +68,10 @@ function CleanFieldsObject(item) {
   let newFields = {};
 
   for (var camel in item.fields) {
-    let field = camelCase(camel);
-    let value = item.fields[camel];
-
-    if (field === 'className') {
-      value = 'ContentBlock';
-    }
-
-    newFields[field] = value;
+    newFields[camelCase(camel)] = item.fields[camel];
   }
+
+  newFields['className'] = 'ContentBlock';
 
   return newFields;
 }
