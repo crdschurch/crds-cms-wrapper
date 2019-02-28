@@ -71,6 +71,8 @@ function CleanFieldsObject(item) {
     newFields[camelCase(camel)] = item.fields[camel];
   }
 
+  newFields['className'] = 'ContentBlock';
+
   return newFields;
 }
 
