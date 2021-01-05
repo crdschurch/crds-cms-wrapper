@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/crdschurch/crds-cms-wrapper#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "lodash.camelcase": "^4.3.0"
   }
 }
